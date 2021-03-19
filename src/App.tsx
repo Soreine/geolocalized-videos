@@ -56,6 +56,13 @@ function App() {
         <p>Your position is not available yet.</p>
       ) : (
         <>
+          {nearestVideo && (
+            <p>
+              The nearest video is{" "}
+              <VideoItem position={position} record={nearestVideo} />
+            </p>
+          )}
+
           <table>
             <tr>
               <td>Latitude</td>
@@ -73,14 +80,6 @@ function App() {
           <p>
             You may get better accuracy on mobile by disconnecting your WiFi
             (which could force the switch to using GPS).
-          </p>
-          <p>
-            {nearestVideo && (
-              <span>
-                The nearest video is{" "}
-                <VideoItem position={position} record={nearestVideo} />
-              </span>
-            )}
           </p>
         </>
       )}
