@@ -55,7 +55,7 @@ function App() {
       ) : !position ? (
         <p>Your position is not available yet.</p>
       ) : (
-        <p>
+        <>
           <table>
             <tr>
               <td>Latitude</td>
@@ -70,15 +70,19 @@ function App() {
               <td>{position.coords.accuracy}</td>
             </tr>
           </table>
-          <br />
-
-          {nearestVideo && (
-            <span>
-              The nearest video is{" "}
-              <VideoItem position={position} record={nearestVideo} />
-            </span>
-          )}
-        </p>
+          <p>
+            You may get better accuracy on mobile by disconnecting your WiFi
+            (which could force the switch to using GPS).
+          </p>
+          <p>
+            {nearestVideo && (
+              <span>
+                The nearest video is{" "}
+                <VideoItem position={position} record={nearestVideo} />
+              </span>
+            )}
+          </p>
+        </>
       )}
 
       <h2>Video library</h2>
