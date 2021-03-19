@@ -1,8 +1,6 @@
 import "./App.css";
 import { useEffect, useRef, useState } from "react";
 
-
-
 function App() {
   const { position, allowedGeolocation } = useCurrentPosition();
 
@@ -13,15 +11,15 @@ function App() {
       {!allowedGeolocation || !position ? (
         <p>Could not get your position</p>
       ) : (
-        <p>Nice, here is your position {position.coords.latitude}, {position.coords.longitude}
-        <br/>
-        The accuracy is {position.coords.accuracy}
+        <p>
+          You are here: {position.coords.latitude}, {position.coords.longitude}
+          <br />
+          The accuracy is {position.coords.accuracy}
         </p>
       )}
     </div>
   );
 }
-
 
 function useCurrentPosition() {
   const [position, setPosition] = useState<GeolocationPosition>();
@@ -35,23 +33,23 @@ function useCurrentPosition() {
         (pos) => {
           setPosition(pos);
           setAllowedGeolocation(true);
-        }, 
+        },
         (_error) => {
           setAllowedGeolocation(false);
         },
         {
           enableHighAccuracy: true,
           timeout: 0,
-          maximumAge: 0
-        }
+          maximumAge: 0,
+        },
       );
     }
   }, [allowedGeolocation]);
 
-
   return {
-    position, allowedGeolocation
-  }
+    position,
+    allowedGeolocation,
+  };
 }
 
 export default App;
